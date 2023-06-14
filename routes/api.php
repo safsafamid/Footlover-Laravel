@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\API\PlayerController;
+use App\Http\Controllers\Api\CountryController;
+use App\Http\Controllers\Api\LeagueController;
+use App\Http\Controllers\Api\PlayerController;
+use App\Http\Controllers\Api\TeamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource("players", PlayerController::class);
+Route::apiResource("teams", TeamController::class);
+Route::apiResource("leagues", LeagueController::class);
+Route::apiResource("countrys", CountryController::class);
