@@ -20,6 +20,13 @@ class LeagueController extends Controller
         return response()->json($leagues);
     }
 
+    public function getTeams(League $league)
+    {
+        $teams = $league->teams;
+
+        return response()->json($teams);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

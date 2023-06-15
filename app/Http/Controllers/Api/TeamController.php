@@ -44,6 +44,13 @@ class TeamController extends Controller
         return response()->json($team);
     }
 
+    public function getPlayers(Team $team)
+    {
+        $players = $team->players;
+
+        return response()->json($players);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('leagues', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('legacy_id')->nullable();
+            $table->bigInteger('country_id')->nullable();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->string('short_code')->nullable();
-            $table->bigInteger('legacy_id')->nullable();
-            $table->bigInteger('country_id')->nullable();
+            $table->string('image_path')->nullable();
             $table->string('is_cup')->nullable();
             $table->string('active')->nullable();
             $table->string('type')->nullable();
-            $table->string('logo_path')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

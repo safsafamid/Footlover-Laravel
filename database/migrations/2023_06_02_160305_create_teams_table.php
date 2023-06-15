@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('name')->nullable();
             $table->string('short_code')->nullable();
+            $table->string('display_name')->nullable();
             $table->string('manager')->nullable();
             $table->string('founded')->nullable();
             $table->string('logo_path')->nullable();
