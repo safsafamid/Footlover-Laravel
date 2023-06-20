@@ -8,6 +8,7 @@ use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\StadiumController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\HomeController;
  
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use App\Http\Controllers\TeamController;
 Route::get('/', function () {
     return view('welcome');
 })->name('main');
+
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('dashboard')->middleware(['auth:sanctum','is_admin']);
 
 // Player
 Route::get('players/index', [PlayerController::class,'index'])->name('players.index');
@@ -42,6 +45,10 @@ Route::get('league/details/{slug}', [LeagueController::class,'details'])->name('
 
 Route::get('index', [LocalizationController::class,'index']);
 Route::get('change/lang', [LocalizationController::class,'lang_change'])->name('LangChange');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
