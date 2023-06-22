@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\LeagueController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\PlayerController;
@@ -35,7 +34,7 @@ Route::put('admin/player/update/{slug}', [PlayerController::class,'adminUpdate']
 Route::get('players/index', [PlayerController::class,'index'])->name('players.index');
 Route::get('player/details/{slug}', [PlayerController::class,'details'])->name('player.details');
 
-// Player
+// Managers
 Route::get('managers/index', [PlayerController::class,'index'])->name('managers.index');
 Route::get('manager/details/{slug}', [PlayerController::class,'details'])->name('manager.details');
 
@@ -57,7 +56,5 @@ Route::get('change/lang', [LocalizationController::class,'lang_change'])->name('
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
