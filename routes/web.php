@@ -20,7 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 })->name('main');
 
+// Admin
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('dashboard')->middleware(['auth:sanctum','is_admin']);
+
+// Admin Players
+Route::get('admin/players/index', [PlayerController::class,'adminIndex'])->middleware(['auth:sanctum','is_admin'])->name('admin.players.index');
+Route::get('admin/player/create', [PlayerController::class,'adminCreate'])->middleware(['auth:sanctum','is_admin'])->name('admin.player.create');
+Route::post('admin/player/store', [PlayerController::class,'adminStore'])->middleware(['auth:sanctum','is_admin'])->name('admin.player.store');
+Route::get('admin/player/details/{slug}', [PlayerController::class,'adminDetails'])->middleware(['auth:sanctum','is_admin'])->name('admin.player.details');
+Route::get('admin/player/edit/{slug}', [PlayerController::class,'adminEdit'])->middleware(['auth:sanctum','is_admin'])->name('admin.player.edit');
+Route::put('admin/player/update/{slug}', [PlayerController::class,'adminUpdate'])->middleware(['auth:sanctum','is_admin'])->name('admin.player.update');
 
 // Player
 Route::get('players/index', [PlayerController::class,'index'])->name('players.index');
