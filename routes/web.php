@@ -38,9 +38,25 @@ Route::get('player/details/{slug}', [PlayerController::class,'details'])->name('
 Route::get('managers/index', [PlayerController::class,'index'])->name('managers.index');
 Route::get('manager/details/{slug}', [PlayerController::class,'details'])->name('manager.details');
 
+// Admin Managers
+Route::get('admin/managers/index', [ManagerController::class,'adminIndex'])->middleware(['auth:sanctum','is_admin'])->name('admin.managers.index');
+Route::get('admin/manager/create', [ManagerController::class,'adminCreate'])->middleware(['auth:sanctum','is_admin'])->name('admin.manager.create');
+Route::post('admin/manager/store', [ManagerController::class,'adminStore'])->middleware(['auth:sanctum','is_admin'])->name('admin.manager.store');
+Route::get('admin/manager/details/{slug}', [ManagerController::class,'adminDetails'])->middleware(['auth:sanctum','is_admin'])->name('admin.manager.details');
+Route::get('admin/manager/edit/{slug}', [ManagerController::class,'adminEdit'])->middleware(['auth:sanctum','is_admin'])->name('admin.manager.edit');
+Route::put('admin/manager/update/{slug}', [ManagerController::class,'adminUpdate'])->middleware(['auth:sanctum','is_admin'])->name('admin.manager.update');
+
 // Teams
 Route::get('teams/index', [TeamController::class,'index'])->name('teams.index');
 Route::get('team/details/{slug}', [TeamController::class,'details'])->name('team.details');
+
+// Admin Teams
+Route::get('admin/teams/index', [TeamController::class,'adminIndex'])->middleware(['auth:sanctum','is_admin'])->name('admin.teams.index');
+Route::get('admin/team/create', [TeamController::class,'adminCreate'])->middleware(['auth:sanctum','is_admin'])->name('admin.team.create');
+Route::post('admin/team/store', [TeamController::class,'adminStore'])->middleware(['auth:sanctum','is_admin'])->name('admin.team.store');
+Route::get('admin/team/details/{slug}', [TeamController::class,'adminDetails'])->middleware(['auth:sanctum','is_admin'])->name('admin.team.details');
+Route::get('admin/team/edit/{slug}', [TeamController::class,'adminEdit'])->middleware(['auth:sanctum','is_admin'])->name('admin.team.edit');
+Route::put('admin/team/update/{slug}', [TeamController::class,'adminUpdate'])->middleware(['auth:sanctum','is_admin'])->name('admin.team.update');
 
 // Stadium
 Route::get('stadium/index', [StadiumController::class,'index'])->name('stadium.index');

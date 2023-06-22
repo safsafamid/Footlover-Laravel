@@ -65,20 +65,20 @@
         </li>
 
         <!-- Layouts -->
-        <li class="menu-item @if (Route::is('admin.players.*')) active open @endif">
+        <li class="menu-item @if (Route::is('admin.players.*')) active open @endif @if (Route::is('admin.player.*')) active open @endif @if (Route::is('admin.teams.*')) active open @endif @if (Route::is('admin.team.*')) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Layouts</div>
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item @if (Route::is('admin.players.*')) active @endif">
+                <li class="menu-item @if (Route::is('admin.players.*')) active @endif @if (Route::is('admin.player.*')) active @endif">
                     <a href="{{ route('admin.players.index') }}" class="menu-link">
                         <div data-i18n="Without menu">{{ __('header.players')}}</div>
                     </a>
                 </li>
-                <li class="menu-item (Route::is('admin.players.*'))">
-                    <a href="layouts-without-navbar.html" class="menu-link">
+                <li class="menu-item @if (Route::is('admin.teams.*')) active @endif @if (Route::is('admin.team.*')) active @endif">
+                    <a href="{{ route('admin.teams.index')}}" class="menu-link">
                         <div data-i18n="Without navbar">{{ __('header.teams')}}</div>
                     </a>
                 </li>

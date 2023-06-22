@@ -134,7 +134,7 @@
                             <div class="mt-2">
                                 <button type="submit"
                                     class="btn btn-primary me-2">{{ __('btns.save_changes') }}</button>
-                                <button type="reset" class="btn btn-outline-secondary">{{ __('btns.cancel') }}</button>
+                                    <a href="{{route('admin.players.index')}}" class="btn btn-outline-secondary">{{ __('btns.cancel') }}</a>
                             </div>
                         </form>
                     </div>
