@@ -8,7 +8,9 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\StadiumController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\HomeController;
- 
+use App\Http\Controllers\SearchController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +21,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('main');
 
+Route::controller(SearchController::class)->group(function(){
+    Route::get('demo-search', 'index');
+    Route::get('autocomplete', 'autocomplete')->name('autocomplete');
+});
+
 // Admin
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('dashboard')->middleware(['auth:sanctum','is_admin']);
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('dashboard')->middleware(['auth:sanctum','is_admin','blockIP']);
 
 // Admin Players
 Route::get('admin/players/index', [PlayerController::class,'adminIndex'])->middleware(['auth:sanctum','is_admin'])->name('admin.players.index');
